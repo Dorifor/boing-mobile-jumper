@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://c07h0yfrhghqn"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_v2isf"]
+[ext_resource type="Texture2D" uid="uid://brojl6r2jmcxw" path="res://red_body_squircle.png" id="2_v8b6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1od1"]
+size = Vector2(81, 80)
+
+[sub_resource type="Animation" id="Animation_7ysfh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_uh0j2"]
+resource_name = "jump"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.15, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.8, 1), Vector2(1.5, 2.5), Vector2(1.5, 2.5), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yowqs"]
+_data = {
+"RESET": SubResource("Animation_7ysfh"),
+"jump": SubResource("Animation_uh0j2")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player")]
+scale = Vector2(2, 2)
+script = ExtResource("1_v2isf")
+SPEED = 1200.0
+JUMP_VELOCITY = -6000.0
+GRAVITY_MULTIPLIER = 18
+animation_player = NodePath("Anim")
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_c1od1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_v8b6a")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yowqs")
+}
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -50.5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Marker2D"]
+remote_path = NodePath("../../Camera2D")
