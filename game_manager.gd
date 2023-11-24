@@ -7,6 +7,7 @@ extends Node2D
 @export var highscore_label: Label
 
 var highscore = 0
+var previous_x_position = 0
 
 var screen_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 var screen_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
@@ -39,10 +40,23 @@ func _on_death_body_entered(body: Node2D) -> void:
 
 func spawn_new_platform(player_y_position) -> void:
 	var new_platform = get_random_platform().instantiate()
-	new_platform.position.x = randi_range(150, screen_width - 150)
+	new_platform.position.x = get_new_platform_x_position(50)
 	new_platform.position.y = player_y_position - screen_height
-	new_platform.scale.x = randf_range(.8, 2)
+	new_platform.scale.x = randf_range(.8, 1.5)
 	add_child(new_platform)
+
+
+func get_new_platform_x_position(iterations: int) -> int:
+	var new_x_position = randi_range(150, screen_width - 150)
+	
+	if iterations == 0:
+		return new_x_position
+	
+	var offset = 550 if iterations >= 15 else 350
+	if previous_x_position - offset <= new_x_position and new_x_position >= previous_x_position + offset:
+		previous_x_position = new_x_position
+		return new_x_position
+	return get_new_platform_x_position(iterations - 1)
 
 
 func _on_restart_button_pressed() -> void:

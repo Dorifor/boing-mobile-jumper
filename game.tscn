@@ -36,7 +36,7 @@ death_area = NodePath("Death")
 highscore_label = NodePath("CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Highschore Label")
 
 [node name="Death" type="Area2D" parent="."]
-position = Vector2(656, 2332)
+position = Vector2(656, 2472)
 scale = Vector2(2, 2)
 metadata/_edit_group_ = true
 
@@ -44,7 +44,7 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_x1dc1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(670, 1612)
+position = Vector2(774, 993)
 scale = Vector2(2, 2)
 limit_left = 0
 limit_right = 1296
@@ -57,7 +57,8 @@ drag_top_margin = 0.1
 editor_draw_limits = true
 
 [node name="Player" parent="." instance=ExtResource("6_xrx8n")]
-position = Vector2(670, 1713)
+position = Vector2(774, 1094)
+JUMP_VELOCITY = -5700.0
 
 [node name="RemoteTransform2D" parent="Player/Marker2D" index="0"]
 remote_path = NodePath("../../../Camera2D")
@@ -175,13 +176,13 @@ stretch_mode = 4
 flip_h = true
 
 [node name="Platform" parent="." instance=ExtResource("3_qakuj")]
-position = Vector2(662, 2000)
+position = Vector2(824, 1819)
 
 [node name="Platform2" parent="." instance=ExtResource("4_nsixm")]
-position = Vector2(290, 1200)
+position = Vector2(305, 1051)
 
-[node name="Platform3" parent="." instance=ExtResource("5_emopn")]
-position = Vector2(1046, 401)
+[node name="Platform3" parent="." instance=ExtResource("4_nsixm")]
+position = Vector2(1000, 285)
 
 [connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
 [connection signal="just_jumped" from="Player" to="." method="_on_player_just_jumped"]
