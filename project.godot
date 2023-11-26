@@ -11,10 +11,9 @@ config_version=5
 [application]
 
 config/name="MobileGame"
-run/main_scene="res://game.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/icon.svg"
 
 [autoload]
 
