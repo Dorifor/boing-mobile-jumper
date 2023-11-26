@@ -60,7 +60,7 @@ func play_random_death_sound() -> void:
 
 func spawn_new_platform(player_y_position) -> void:
 	var new_platform = get_random_platform().instantiate()
-	new_platform.position.x = get_new_platform_x_position(50)
+	new_platform.position.x = get_new_platform_x_position(20)
 	new_platform.position.y = player_y_position - screen_height
 	new_platform.scale.x = randf_range(.8, 1.5)
 	add_child(new_platform)
@@ -72,7 +72,7 @@ func get_new_platform_x_position(iterations: int) -> int:
 	if iterations == 0:
 		return new_x_position
 	
-	var offset = 550 if iterations >= 15 else 350
+	var offset = 550 if iterations >= 7 else 350
 	if previous_x_position - offset <= new_x_position and new_x_position >= previous_x_position + offset:
 		previous_x_position = new_x_position
 		return new_x_position
