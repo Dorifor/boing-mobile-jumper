@@ -2,6 +2,7 @@ extends Node2D
 
 @export var platform_scenes: Array[PackedScene] = []
 @export var death_sounds: Array[AudioStream]
+@export var death_sounds_cursed: Array[AudioStream]
 
 @export var score_label: Label
 @export var death_container: Control
@@ -19,6 +20,10 @@ var screen_height: int = ProjectSettings.get_setting("display/window/size/viewpo
 
 func _ready() -> void:
 	highscore = PlayerPrefs.get_pref("highscore", 0)
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()
 
 
 func _on_player_just_jumped(player_y_position) -> void:
@@ -45,8 +50,10 @@ func _on_death_body_entered(body: Node2D) -> void:
 
 
 func play_random_death_sound() -> void:
-	var rand = randi_range(0, len(death_sounds) - 1)
-	var random_sound = death_sounds[rand]
+	var is_cursed_mode = PlayerPrefs.get_pref("cursed_mode", false)
+	var death_sounds_list = death_sounds_cursed if is_cursed_mode else death_sounds
+	var rand = randi_range(0, len(death_sounds_list) - 1)
+	var random_sound = death_sounds_list[rand]
 	sound_player.stream = random_sound
 	sound_player.play()
 
@@ -96,3 +103,7 @@ func _on_right_button_pressed() -> void:
 
 func _on_right_button_released() -> void:
 	right_arrow.modulate = Color("#ffffff9b")
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

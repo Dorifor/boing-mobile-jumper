@@ -2,3 +2,9 @@ res://scenes/game.tscn
 res://label.tres
 res://prefabs/player.tscn
 res://prefabs/platform_purple.tscn
+res://main_menu.gd
+res://main_menu.tscn
+res://scenes/main_menu.tscn
+res://scripts/main_menu.gd
+res://scripts/Player.gd
+res://scripts/game_manager.gd

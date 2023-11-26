@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://eqiy6h1qfe24"]
+[gd_scene load_steps=26 format=3 uid="uid://eqiy6h1qfe24"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_y075x"]
 [ext_resource type="PackedScene" uid="uid://co1s1kqhenx38" path="res://prefabs/platform_purple.tscn" id="3_qakuj"]
 [ext_resource type="PackedScene" uid="uid://cx08oql6tnr76" path="res://prefabs/platform_blue.tscn" id="3_su4i6"]
 [ext_resource type="PackedScene" uid="uid://xn3206utuilo" path="res://prefabs/platform_green.tscn" id="4_nsixm"]
 [ext_resource type="PackedScene" uid="uid://b5mcynomme1lt" path="res://prefabs/platform_salmon.tscn" id="5_emopn"]
+[ext_resource type="AudioStream" uid="uid://dcm46yxuchc05" path="res://assets/sounds/death/Blast.ogg" id="6_miv65"]
 [ext_resource type="AudioStream" uid="uid://dbaj8338wfj06" path="res://assets/sounds/death/amogus.wav" id="6_qbd8m"]
 [ext_resource type="PackedScene" uid="uid://c07h0yfrhghqn" path="res://prefabs/player.tscn" id="6_xrx8n"]
 [ext_resource type="AudioStream" uid="uid://btibk2l60dw0b" path="res://assets/sounds/death/augh.wav" id="7_msdd2"]
@@ -43,7 +44,8 @@ shadow_offset = Vector2(16, 16)
 [node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "death_container", "death_area", "highscore_label", "sound_player", "right_arrow", "left_arrow")]
 script = ExtResource("1_y075x")
 platform_scenes = Array[PackedScene]([ExtResource("3_qakuj"), ExtResource("3_su4i6"), ExtResource("4_nsixm"), ExtResource("5_emopn")])
-death_sounds = Array[AudioStream]([ExtResource("6_qbd8m"), ExtResource("7_msdd2"), ExtResource("8_2qjpy"), ExtResource("9_lh2w4"), ExtResource("10_1owvy"), ExtResource("11_1inpe"), ExtResource("12_jjxbg"), ExtResource("13_n46fb"), ExtResource("14_uby21"), ExtResource("15_7qx40"), ExtResource("16_ycxql")])
+death_sounds = Array[AudioStream]([ExtResource("6_miv65")])
+death_sounds_cursed = Array[AudioStream]([ExtResource("6_qbd8m"), ExtResource("7_msdd2"), ExtResource("8_2qjpy"), ExtResource("9_lh2w4"), ExtResource("10_1owvy"), ExtResource("11_1inpe"), ExtResource("12_jjxbg"), ExtResource("13_n46fb"), ExtResource("14_uby21"), ExtResource("15_7qx40"), ExtResource("16_ycxql")])
 score_label = NodePath("CanvasLayer/Score Container/Score Label")
 death_container = NodePath("CanvasLayer/Death Container")
 death_area = NodePath("Death")
@@ -125,6 +127,7 @@ theme_override_constants/margin_bottom = 64
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Death Label" type="Label" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
@@ -152,7 +155,13 @@ label_settings = ExtResource("8_vun1a")
 layout_mode = 2
 theme_override_constants/separation = 90
 
-[node name="Restart Button" type="Button" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Menu Button" type="Button" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("18_k85kr")
+theme_override_font_sizes/font_size = 128
+text = "MENU"
+
+[node name="Restart Button2" type="Button" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("18_k85kr")
 theme_override_font_sizes/font_size = 128
@@ -225,7 +234,8 @@ position = Vector2(1000, 285)
 
 [connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
 [connection signal="just_jumped" from="Player" to="." method="_on_player_just_jumped"]
-[connection signal="pressed" from="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/Menu Button" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/Restart Button2" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Left Button" to="." method="_on_left_button_pressed"]
 [connection signal="released" from="CanvasLayer/Left Button" to="." method="_on_left_button_released"]
 [connection signal="pressed" from="CanvasLayer/Right Button" to="." method="_on_right_button_pressed"]

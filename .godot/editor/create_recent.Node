@@ -1,1 +1,8 @@
+CheckButton
+AnimationPlayer
+MarginContainer
+Button
+TextureRect
+VBoxContainer
+PanelContainer
 AudioStreamPlayer

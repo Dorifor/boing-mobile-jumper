@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @export var animation_player: AnimationPlayer
 @export var jump_sounds: Array[AudioStream] = []
+@export var jump_sounds_cursed: Array[AudioStream] = []
 @export var jump_audio_player: AudioStreamPlayer
 
 signal just_jumped(player_y_position: int)
@@ -56,8 +57,10 @@ func break_platform(platform):
 
 
 func play_random_jump_sound() -> void:
-	var rand = randi_range(0, len(jump_sounds) - 1)
-	var random_sound = jump_sounds[rand]
+	var is_cursed_mode = PlayerPrefs.get_pref("cursed_mode", false)
+	var jump_sounds_list = jump_sounds_cursed if is_cursed_mode else jump_sounds
+	var rand = randi_range(0, len(jump_sounds_list) - 1)
+	var random_sound = jump_sounds_list[rand]
 	jump_audio_player.stream = random_sound
 	jump_audio_player.play()
 

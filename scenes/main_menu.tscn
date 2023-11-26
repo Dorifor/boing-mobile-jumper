@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgqm1yw38sk74"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_j5sw4"]
+[ext_resource type="Texture2D" uid="uid://dafut6b0nwppu" path="res://assets/sprites/boing.png" id="2_y6vlv"]
+[ext_resource type="PackedScene" uid="uid://eqiy6h1qfe24" path="res://scenes/game.tscn" id="2_yqtyo"]
+[ext_resource type="FontFile" uid="uid://c7kdy7nw2cp83" path="res://assets/comic.ttf" id="3_0wysn"]
+[ext_resource type="Texture2D" uid="uid://c4l64c3i45bo6" path="res://assets/GuiToggleOn.svg" id="5_xl08w"]
+[ext_resource type="Texture2D" uid="uid://newxa2w7fl84" path="res://assets/GuiToggleOff.svg" id="6_77jaa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gq20"]
+bg_color = Color(0.0823529, 0.145098, 0.14902, 1)
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("cursed_mode_toggle")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5sw4")
+game_scene = ExtResource("2_yqtyo")
+cursed_mode_toggle = NodePath("PanelContainer/MarginContainer/VBoxContainer/Cursed Mode Toggle")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gq20")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="App Logo" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_y6vlv")
+stretch_mode = 5
+
+[node name="Play Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0wysn")
+theme_override_font_sizes/font_size = 128
+text = "Play"
+
+[node name="Cursed Mode Toggle" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0wysn")
+theme_override_font_sizes/font_size = 128
+theme_override_icons/checked = ExtResource("5_xl08w")
+theme_override_icons/unchecked = ExtResource("6_77jaa")
+text = "Cursed Mode"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Cursed Mode Toggle" to="." method="_on_cursed_mode_toggle_toggled"]

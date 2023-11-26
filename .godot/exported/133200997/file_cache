@@ -1,9 +1,10 @@
 res://addons/PlayerPrefs/PlayerPrefs.tscn::32e01f9053d4ad6d471bfb90e712b0bd::1700847768::res://.godot/exported/133200997/export-d7e6f3cd8c1ee152c7293bf49fbd4e7c-PlayerPrefs.scn
 res://addons/PlayerPrefs/test.tscn::1e371426ec96fcbb3b35835eeb71b5b7::1700847768::res://.godot/exported/133200997/export-1a188f0104319af77df6f8d888d207a5-test.scn
-res://label.tres::5424b1e24442236ec8a39882fb7eb796::1700953434::res://.godot/exported/133200997/export-0cadfeaf837fa29203c467e7c9cef69c-label.res
+res://label.tres::5424b1e24442236ec8a39882fb7eb796::1701019726::res://.godot/exported/133200997/export-0cadfeaf837fa29203c467e7c9cef69c-label.res
 res://prefabs/platform_blue.tscn::8dd738287fe6fb884a117b8fa38b2eb8::1700858347::res://.godot/exported/133200997/export-ba41c797007aca6f430d6183031aec50-platform_blue.scn
 res://prefabs/platform_green.tscn::2a9f528d84c30480c42e3275cc3bcb34::1700858347::res://.godot/exported/133200997/export-e5b548f2e42b7128c2c70f2a0e6c40d8-platform_green.scn
-res://prefabs/platform_purple.tscn::be4c3f655b97cac704e0d411cf89b640::1700953434::res://.godot/exported/133200997/export-214ba1c655e3cd4c460facc5f9195ce9-platform_purple.scn
+res://prefabs/platform_purple.tscn::be4c3f655b97cac704e0d411cf89b640::1701039469::res://.godot/exported/133200997/export-214ba1c655e3cd4c460facc5f9195ce9-platform_purple.scn
 res://prefabs/platform_salmon.tscn::c03377b6d6a3c5079c2584d5ba832270::1700858347::res://.godot/exported/133200997/export-c775e4805d6d021a3456d53ec1a17f83-platform_salmon.scn
-res://prefabs/player.tscn::484a5d41114376c3be718a3ef230c5b7::1700953434::res://.godot/exported/133200997/export-42edd82908ac9fd10409a12fa106efa9-player.scn
-res://scenes/game.tscn::fc07a3dfa3da132c3ec423b270d68b06::1700953434::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://prefabs/player.tscn::cad24bc9716cb523a69ec0768442d43b::1701039469::res://.godot/exported/133200997/export-42edd82908ac9fd10409a12fa106efa9-player.scn
+res://scenes/game.tscn::afe4a2c89cc4c4c81f0fc79f04e88603::1701039537::res://.godot/exported/133200997/export-c2a7af834e91ff64325daddf58e45dc0-game.scn
+res://scenes/main_menu.tscn::d518f0c755131367e521a1e290293cf9::1701039469::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn

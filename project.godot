@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="MobileGame"
-run/main_scene="res://scenes/game.tscn"
+config/name="Boing"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://assets/sprites/icon.svg"
+config/icon="res://assets/sprites/boing_logo.png"
 
 [autoload]
 
