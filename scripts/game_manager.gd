@@ -1,8 +1,13 @@
 extends Node2D
 
+# base width : 80px (3 parts: 240px) (then 2x scale: 480px)
+const BASE_PLATFORM_WIDTH: int = 480
+const BACKGROUND_HEIGHT: int = 4736
+
 @export var platform_scenes: Array[PackedScene] = []
 @export var death_sounds: Array[AudioStream]
 @export var death_sounds_cursed: Array[AudioStream]
+@export var platform_distance: int = 850
 
 @export var score_label: Label
 @export var death_container: Control
@@ -13,7 +18,9 @@ extends Node2D
 @export var left_arrow: TextureRect
 
 var highscore = 0
-var previous_x_position = 0
+var prev_x_position = 0
+@export var platforms: Array[AnimatableBody2D]
+@export var backgrounds: Array[Sprite2D]
 
 var screen_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 var screen_height: int = ProjectSettings.get_setting("display/window/size/viewport_height")
@@ -26,9 +33,9 @@ func _input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 
 
-func _on_player_just_jumped(player_y_position) -> void:
-	spawn_new_platform(player_y_position)
-	death_area.position.y = player_y_position + screen_height / 2
+func _on_player_just_jumped(platform_position: Vector2) -> void:
+	spawn_new_platform(platform_position)
+	death_area.position.y = platform_position.y + platform_distance
 	update_score_label()
 
 
@@ -58,26 +65,50 @@ func play_random_death_sound() -> void:
 	sound_player.play()
 
 
-func spawn_new_platform(player_y_position) -> void:
-	var new_platform = get_random_platform().instantiate()
-	new_platform.position.x = get_new_platform_x_position(20)
-	new_platform.position.y = player_y_position - screen_height
-	new_platform.scale.x = randf_range(.8, 1.5)
+func spawn_new_platform(prev_platform_position: Vector2) -> void:
+	var new_platform: AnimatableBody2D = get_random_platform().instantiate()
+	var new_scale = randf_range(.8, 1.5)
+	new_platform.position.y = prev_platform_position.y - 3 * platform_distance
+	new_platform.position.x = get_new_platform_x_position(new_scale)
+	new_platform.scale.x = new_scale
+	
 	add_child(new_platform)
+	platforms.append(new_platform)
 
 
-func get_new_platform_x_position(iterations: int) -> int:
-	var new_x_position = randi_range(150, screen_width - 150)
+func get_new_platform_x_position(new_platform_x_scale: float) -> int:
+	# new_platform_width / 2 -> prev_x - prev_w / 2 || prev_x + prev_w / 2 -> screen_width - new_platform_width / 2
+	var left = randi_range(0, 1) == 1
 	
-	if iterations == 0:
-		return new_x_position
+	var prev_platform = platforms.get(platforms.size() - 1)
 	
-	var offset = 550 if iterations >= 7 else 350
-	if previous_x_position - offset <= new_x_position and new_x_position >= previous_x_position + offset:
-		previous_x_position = new_x_position
-		return new_x_position
-	return get_new_platform_x_position(iterations - 1)
+	var prev_platform_width = prev_platform.scale.x * BASE_PLATFORM_WIDTH
+	var new_platform_width = new_platform_x_scale * BASE_PLATFORM_WIDTH
+	
+	var left_min = new_platform_width / 2
+	var left_max = prev_platform.position.x - prev_platform_width / 1.75
+	
+	var right_min = prev_platform.position.x + prev_platform_width / 1.75
+	var right_max = screen_width - new_platform_width / 2
+	
+	if left_max <= left_min:
+		left = false
+	if right_max <= right_min:
+		left = true
+	
+	return randi_range(left_min, left_max) if left else randi_range(right_min, right_max)
 
+func on_background_area_reached(body: Node2D):
+	print(body.name)
+	var last_bg: Sprite2D = backgrounds.pop_at(0)
+	var current: Sprite2D = backgrounds[0]
+	current.get_child(0).set_deferred("monitoring", false)
+	current.get_child(0).get_child(0).set_deferred("disabled", true)
+	last_bg.get_child(0).set_deferred("monitoring", true)
+	last_bg.get_child(0).get_child(0).set_deferred("disabled", false)
+	last_bg.position.y -= BACKGROUND_HEIGHT * 3
+	backgrounds.append(last_bg)
+	#print("REACHED, moved %s" % last_bg.get_meta("color"))
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
@@ -86,7 +117,6 @@ func _on_restart_button_pressed() -> void:
 func get_random_platform() -> PackedScene:
 	var i = randi_range(0, len(platform_scenes) - 1)
 	return platform_scenes[i]
-
 
 
 func _on_left_button_pressed() -> void:

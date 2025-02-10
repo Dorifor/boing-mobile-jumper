@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://c07h0yfrhghqn"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_v2isf"]
+[ext_resource type="Script" uid="uid://cpt5w80a5lvc7" path="res://scripts/Player.gd" id="1_v2isf"]
 [ext_resource type="Texture2D" uid="uid://brojl6r2jmcxw" path="res://assets/sprites/red_body_squircle.png" id="2_kkcv2"]
 [ext_resource type="AudioStream" uid="uid://ve4hsjq0olv7" path="res://assets/sounds/jump/boink.wav" id="2_s0rrc"]
 [ext_resource type="AudioStream" uid="uid://bj074p7n8ygw7" path="res://assets/sounds/jump/impactMetal_heavy_000.ogg" id="2_wh61d"]
@@ -145,10 +145,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yowqs"]
 _data = {
-"RESET": SubResource("Animation_7ysfh"),
-"jump": SubResource("Animation_uh0j2"),
-"jump_spin_left": SubResource("Animation_rtw05"),
-"jump_spin_right": SubResource("Animation_3sgp5")
+&"RESET": SubResource("Animation_7ysfh"),
+&"jump": SubResource("Animation_uh0j2"),
+&"jump_spin_left": SubResource("Animation_rtw05"),
+&"jump_spin_right": SubResource("Animation_3sgp5")
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "jump_audio_player")]
@@ -172,7 +172,7 @@ texture = ExtResource("2_kkcv2")
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yowqs")
+&"": SubResource("AnimationLibrary_yowqs")
 }
 
 [node name="Marker2D" type="Marker2D" parent="."]

@@ -247,8 +247,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74yjv"]
 _data = {
-"RESET": SubResource("Animation_didqt"),
-"breaking": SubResource("Animation_pfjky")
+&"RESET": SubResource("Animation_didqt"),
+&"breaking": SubResource("Animation_pfjky")
 }
 
 [node name="Platform" type="AnimatableBody2D"]
@@ -271,5 +271,5 @@ one_way_collision = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_74yjv")
+&"": SubResource("AnimationLibrary_74yjv")
 }

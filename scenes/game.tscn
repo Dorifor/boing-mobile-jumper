@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://eqiy6h1qfe24"]
+[gd_scene load_steps=33 format=3 uid="uid://eqiy6h1qfe24"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_y075x"]
+[ext_resource type="Script" uid="uid://dt0inpp67rpig" path="res://scripts/game_manager.gd" id="1_y075x"]
 [ext_resource type="PackedScene" uid="uid://co1s1kqhenx38" path="res://prefabs/platform_purple.tscn" id="3_qakuj"]
 [ext_resource type="PackedScene" uid="uid://cx08oql6tnr76" path="res://prefabs/platform_blue.tscn" id="3_su4i6"]
 [ext_resource type="PackedScene" uid="uid://xn3206utuilo" path="res://prefabs/platform_green.tscn" id="4_nsixm"]
@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://btibk2l60dw0b" path="res://assets/sounds/death/augh.wav" id="7_msdd2"]
 [ext_resource type="AudioStream" uid="uid://cf1rasw6oqrh4" path="res://assets/sounds/death/bong.wav" id="8_2qjpy"]
 [ext_resource type="Texture2D" uid="uid://bf8vcv4kmnlpw" path="res://assets/sprites/triangle.svg" id="8_oa06d"]
-[ext_resource type="LabelSettings" uid="uid://c2pjduu8ismol" path="res://label.tres" id="8_vun1a"]
+[ext_resource type="LabelSettings" uid="uid://c2pjduu8ismol" path="res://assets/label.tres" id="8_vun1a"]
 [ext_resource type="AudioStream" uid="uid://cm7awc787ywy" path="res://assets/sounds/death/boom.wav" id="9_lh2w4"]
 [ext_resource type="AudioStream" uid="uid://dc5eeuemd2lf4" path="res://assets/sounds/death/boowomp.wav" id="10_1owvy"]
 [ext_resource type="AudioStream" uid="uid://4057m32qvlfh" path="res://assets/sounds/death/bruh.wav" id="11_1inpe"]
@@ -20,46 +20,78 @@
 [ext_resource type="AudioStream" uid="uid://bi0ym3iiv8dij" path="res://assets/sounds/death/minecraft_explosion.wav" id="14_uby21"]
 [ext_resource type="AudioStream" uid="uid://ipp1o0k4heg6" path="res://assets/sounds/death/nerdhorn.wav" id="15_7qx40"]
 [ext_resource type="AudioStream" uid="uid://byoq300tduh8d" path="res://assets/sounds/death/skeleton.wav" id="16_ycxql"]
-[ext_resource type="FontFile" uid="uid://c7kdy7nw2cp83" path="res://assets/comic.ttf" id="18_k85kr"]
+[ext_resource type="FontFile" uid="uid://c3tsfmbxevre6" path="res://assets/fonts/Dosis-Medium.ttf" id="19_37s47"]
+[ext_resource type="Script" uid="uid://dgo34kufctn87" path="res://nodes/interactive_touchscreen_button.gd" id="22_37s47"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1dc1"]
 size = Vector2(692, 20)
 
-[sub_resource type="Gradient" id="Gradient_qh4tf"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.839216, 0.921569, 0.921569, 1)
+[sub_resource type="Gradient" id="Gradient_37s47"]
+offsets = PackedFloat32Array(0, 0.510638, 1)
+colors = PackedColorArray(0.809334, 0.926402, 0.934939, 1, 0.853138, 0.949229, 0.942866, 1, 0.737587, 0.905932, 0.926082, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_axqvl"]
-gradient = SubResource("Gradient_qh4tf")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bt5mj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e1j6l"]
+seamless = true
+color_ramp = SubResource("Gradient_37s47")
+noise = SubResource("FastNoiseLite_bt5mj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37s47"]
+size = Vector2(322.829, 56.9647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt5mj"]
+size = Vector2(322.829, 56.9647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e1j6l"]
+size = Vector2(322.829, 56.9647)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vrdds"]
-font = ExtResource("18_k85kr")
+font = ExtResource("19_37s47")
 font_size = 256
+font_color = Color(0.996078, 0.996078, 0.996078, 1)
 outline_size = 32
-outline_color = Color(0.592157, 0.611765, 0.878431, 1)
-shadow_size = 32
-shadow_color = Color(0.592157, 0.611765, 0.878431, 1)
-shadow_offset = Vector2(16, 16)
+outline_color = Color(0.984314, 0.792157, 0.298039, 1)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "death_container", "death_area", "highscore_label", "sound_player", "right_arrow", "left_arrow")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5newe"]
+bg_color = Color(0.2754, 0.40905, 0.81, 0.831373)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.996078, 0.996078, 0.996078, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37s47"]
+bg_color = Color(0.996078, 0.996078, 0.996078, 1)
+border_width_top = 8
+border_color = Color(0.996078, 0.996078, 0.996078, 1)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("score_label", "death_container", "death_area", "highscore_label", "sound_player", "right_arrow", "left_arrow", "platforms", "backgrounds")]
 script = ExtResource("1_y075x")
 platform_scenes = Array[PackedScene]([ExtResource("3_qakuj"), ExtResource("3_su4i6"), ExtResource("4_nsixm"), ExtResource("5_emopn")])
 death_sounds = Array[AudioStream]([ExtResource("6_miv65")])
 death_sounds_cursed = Array[AudioStream]([ExtResource("6_qbd8m"), ExtResource("7_msdd2"), ExtResource("8_2qjpy"), ExtResource("9_lh2w4"), ExtResource("10_1owvy"), ExtResource("11_1inpe"), ExtResource("12_jjxbg"), ExtResource("13_n46fb"), ExtResource("14_uby21"), ExtResource("15_7qx40"), ExtResource("16_ycxql")])
 score_label = NodePath("CanvasLayer/Score Container/Score Label")
 death_container = NodePath("CanvasLayer/Death Container")
-death_area = NodePath("Death")
+death_area = NodePath("Death Area")
 highscore_label = NodePath("CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Highschore Label")
 sound_player = NodePath("Sound Player")
 right_arrow = NodePath("CanvasLayer/Right Arrow")
 left_arrow = NodePath("CanvasLayer/Left Arrow")
+platforms = [NodePath("Platform"), NodePath("Platform2"), NodePath("Platform3")]
+backgrounds = [NodePath("Background"), NodePath("Background2"), NodePath("Background3")]
 
-[node name="Death" type="Area2D" parent="."]
+[node name="Death Area" type="Area2D" parent="."]
 position = Vector2(656, 2472)
 scale = Vector2(2, 2)
+collision_mask = 2
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Death"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Area"]
 shape = SubResource("RectangleShape2D_x1dc1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -75,22 +107,54 @@ drag_vertical_enabled = true
 drag_top_margin = 0.1
 editor_draw_limits = true
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(608, 5694)
+scale = Vector2(8.375, 9.25)
+texture = SubResource("NoiseTexture2D_e1j6l")
+metadata/color = "green"
+
+[node name="Area" type="Area2D" parent="Background"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area"]
+position = Vector2(0, -203.835)
+shape = SubResource("RectangleShape2D_37s47")
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(608, 958)
+scale = Vector2(8.375, 9.25)
+texture = SubResource("NoiseTexture2D_e1j6l")
+metadata/color = "blue"
+
+[node name="Area" type="Area2D" parent="Background2"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background2/Area"]
+position = Vector2(0, -203.835)
+shape = SubResource("RectangleShape2D_bt5mj")
+
+[node name="Background3" type="Sprite2D" parent="."]
+position = Vector2(608, -3778)
+scale = Vector2(8.375, 9.25)
+texture = SubResource("NoiseTexture2D_e1j6l")
+metadata/color = "red"
+
+[node name="Area" type="Area2D" parent="Background3"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background3/Area"]
+position = Vector2(0, -203.835)
+shape = SubResource("RectangleShape2D_e1j6l")
+
 [node name="Player" parent="." instance=ExtResource("6_xrx8n")]
 position = Vector2(774, 1094)
+collision_layer = 2
 JUMP_VELOCITY = -5700.0
 
 [node name="RemoteTransform2D" parent="Player/Marker2D" index="0"]
 remote_path = NodePath("../../../Camera2D")
-
-[node name="Platforms" type="Node" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(652.5, 1152.5)
-scale = Vector2(21.9844, 38.1719)
-texture = SubResource("GradientTexture2D_axqvl")
+update_rotation = false
+update_scale = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -117,6 +181,7 @@ grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Death Container"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5newe")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Death Container/PanelContainer"]
 layout_mode = 2
@@ -132,8 +197,9 @@ alignment = 1
 
 [node name="Death Label" type="Label" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "YOU DIED !111!1!11"
+text = "You fell !"
 label_settings = ExtResource("8_vun1a")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -143,7 +209,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Highest: "
+text = "Highscore:"
 label_settings = ExtResource("8_vun1a")
 
 [node name="Highschore Label" type="Label" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -154,91 +220,99 @@ label_settings = ExtResource("8_vun1a")
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 90
+theme_override_styles/separator = SubResource("StyleBoxFlat_37s47")
 
 [node name="Menu Button" type="Button" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("18_k85kr")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 text = "MENU"
 
 [node name="Restart Button2" type="Button" parent="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("18_k85kr")
-theme_override_font_sizes/font_size = 128
-text = "UNDIE"
+theme_type_variation = &"ButtonGold"
+theme_override_font_sizes/font_size = 96
+text = "TRY AGAIN"
 
-[node name="Left Button" type="TouchScreenButton" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(557, 2311)
-rotation = 3.14159
-scale = Vector2(4.89735, 3.94078)
-texture_normal = ExtResource("8_oa06d")
-action = "ui_left"
-visibility_mode = 1
-metadata/_edit_group_ = true
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -647.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Right Button" type="TouchScreenButton" parent="CanvasLayer"]
+[node name="Left Button" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1285, 2311)
-rotation = 3.14159
-scale = Vector2(4.89735, 3.94078)
+layout_mode = 2
+size_flags_horizontal = 3
 texture_normal = ExtResource("8_oa06d")
-action = "ui_right"
-visibility_mode = 1
+script = ExtResource("22_37s47")
+input_action = &"ui_left"
+metadata/_custom_type_script = ExtResource("22_37s47")
+
+[node name="Right Button" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_oa06d")
+script = ExtResource("22_37s47")
+input_action = &"ui_right"
+metadata/_custom_type_script = ExtResource("22_37s47")
 
 [node name="Right Arrow" type="TextureRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0.607843)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 252.0
-offset_top = 804.0
-offset_right = 362.0
-offset_bottom = 929.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -420.0
+offset_top = -291.0
+offset_right = -310.0
+offset_bottom = -166.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(2, 2)
 texture = ExtResource("8_oa06d")
 stretch_mode = 2
 
 [node name="Left Arrow" type="TextureRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0.607843)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -448.0
-offset_top = 804.0
-offset_right = -338.0
-offset_bottom = 929.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = -291.0
+offset_right = 302.0
+offset_bottom = -166.0
+grow_vertical = 0
 scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("8_oa06d")
 stretch_mode = 4
 flip_h = true
 
 [node name="Platform" parent="." instance=ExtResource("3_qakuj")]
-position = Vector2(824, 1819)
+position = Vector2(824, 1800)
 
 [node name="Platform2" parent="." instance=ExtResource("4_nsixm")]
-position = Vector2(305, 1051)
+position = Vector2(305, 925)
 
 [node name="Platform3" parent="." instance=ExtResource("4_nsixm")]
-position = Vector2(1000, 285)
+position = Vector2(1000, 50)
 
 [node name="Sound Player" type="AudioStreamPlayer" parent="."]
 
-[connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="Death Area" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="Background/Area" to="." method="on_background_area_reached"]
+[connection signal="body_entered" from="Background2/Area" to="." method="on_background_area_reached"]
+[connection signal="body_entered" from="Background3/Area" to="." method="on_background_area_reached"]
 [connection signal="just_jumped" from="Player" to="." method="_on_player_just_jumped"]
 [connection signal="pressed" from="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/Menu Button" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Death Container/PanelContainer/MarginContainer/VBoxContainer/Restart Button2" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Left Button" to="." method="_on_left_button_pressed"]
-[connection signal="released" from="CanvasLayer/Left Button" to="." method="_on_left_button_released"]
-[connection signal="pressed" from="CanvasLayer/Right Button" to="." method="_on_right_button_pressed"]
-[connection signal="released" from="CanvasLayer/Right Button" to="." method="_on_right_button_released"]
 
 [editable path="Player"]

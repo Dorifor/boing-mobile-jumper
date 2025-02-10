@@ -1,10 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cx08oql6tnr76"]
 
 [ext_resource type="PackedScene" uid="uid://co1s1kqhenx38" path="res://prefabs/platform_purple.tscn" id="1_5go0p"]
-[ext_resource type="Texture2D" uid="uid://c4bjdd70577uc" path="res://assets/tile_half_center_blue.png" id="2_yo4nl"]
-[ext_resource type="Texture2D" uid="uid://ho4tlbt2t1wo" path="res://assets/tile_half_left_blue.png" id="3_1smwc"]
-[ext_resource type="Texture2D" uid="uid://bfk6rucvs7jie" path="res://assets/tile_half_right_blue.png" id="4_styj7"]
-
+[ext_resource type="Texture2D" uid="uid://c4bjdd70577uc" path="res://assets/sprites/tile_half_center_blue.png" id="2_yo4nl"]
+[ext_resource type="Texture2D" uid="uid://ho4tlbt2t1wo" path="res://assets/sprites/tile_half_left_blue.png" id="3_1smwc"]
+[ext_resource type="Texture2D" uid="uid://bfk6rucvs7jie" path="res://assets/sprites/tile_half_right_blue.png" id="4_styj7"]
 
 [node name="Platform" instance=ExtResource("1_5go0p")]
 

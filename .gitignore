@@ -1,2 +1,3 @@
 *.apk
 exports
+.godot/

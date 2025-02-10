@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c2pjduu8ismol"]
-
-[ext_resource type="FontFile" uid="uid://c7kdy7nw2cp83" path="res://assets/comic.ttf" id="1_7l7l4"]
-
-[resource]
-font = ExtResource("1_7l7l4")
-font_size = 64

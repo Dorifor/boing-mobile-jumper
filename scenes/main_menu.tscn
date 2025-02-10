@@ -1,16 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgqm1yw38sk74"]
+[gd_scene load_steps=11 format=3 uid="uid://dgqm1yw38sk74"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_j5sw4"]
-[ext_resource type="Texture2D" uid="uid://dafut6b0nwppu" path="res://assets/sprites/boing.png" id="2_y6vlv"]
+[ext_resource type="Script" uid="uid://dsb0ox6onigrr" path="res://scripts/main_menu.gd" id="1_j5sw4"]
 [ext_resource type="PackedScene" uid="uid://eqiy6h1qfe24" path="res://scenes/game.tscn" id="2_yqtyo"]
-[ext_resource type="FontFile" uid="uid://c7kdy7nw2cp83" path="res://assets/comic.ttf" id="3_0wysn"]
-[ext_resource type="Texture2D" uid="uid://c4l64c3i45bo6" path="res://assets/GuiToggleOn.svg" id="5_xl08w"]
-[ext_resource type="Texture2D" uid="uid://newxa2w7fl84" path="res://assets/GuiToggleOff.svg" id="6_77jaa"]
+[ext_resource type="Texture2D" uid="uid://b087gdr362jo6" path="res://assets/sprites/pattern.png" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://dvgqk44pkaup5" path="res://assets/sprites/temp_logo.png" id="4_oa1go"]
+[ext_resource type="Theme" uid="uid://bd0iprnxa3pn0" path="res://assets/ui_theme.tres" id="4_wu84c"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gq20"]
-bg_color = Color(0.0823529, 0.145098, 0.14902, 1)
+[sub_resource type="Animation" id="Animation_5dd4i"]
+length = 0.001
 
-[node name="Main Menu" type="Control" node_paths=PackedStringArray("cursed_mode_toggle")]
+[sub_resource type="Animation" id="Animation_jk1qb"]
+resource_name = "menu_background_pattern"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-648, -686)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgwnu"]
+_data = {
+&"RESET": SubResource("Animation_5dd4i"),
+&"menu_background_pattern": SubResource("Animation_jk1qb")
+}
+
+[sub_resource type="Gradient" id="Gradient_rtw2f"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.62766, 0.973404)
+colors = PackedColorArray(0.447059, 0.537255, 0.909804, 0, 0.447059, 0.537255, 0.909804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oa1go"]
+gradient = SubResource("Gradient_rtw2f")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Main Menu" type="Control"]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,46 +52,146 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j5sw4")
 game_scene = ExtResource("2_yqtyo")
-cursed_mode_toggle = NodePath("PanelContainer/MarginContainer/VBoxContainer/Cursed Mode Toggle")
+metadata/_edit_vertical_guides_ = [336.0, 964.0]
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Background Color" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6gq20")
+color = Color(0.447059, 0.537255, 0.909804, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+[node name="Background Pattern" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.156863)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -859.0
+offset_top = -1375.0
+offset_right = 2258.0
+offset_bottom = 3110.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rtw2f")
+expand_mode = 4
+stretch_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-layout_mode = 2
-alignment = 1
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background Pattern"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgwnu")
+}
+autoplay = "menu_background_pattern"
 
-[node name="App Logo" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_y6vlv")
-stretch_mode = 5
+[node name="App Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -678.0
+offset_right = 312.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_oa1go")
+stretch_mode = 3
 
-[node name="Play Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0wysn")
-theme_override_font_sizes/font_size = 128
-text = "Play"
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.5
+offset_top = 13.0
+offset_right = 391.5
+offset_bottom = 337.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 304
+theme_override_font_sizes/bold_font_size = 304
+bbcode_enabled = true
+text = "[wave amp=100.0 freq=2.0 connected=1][b]BOING[/b][/wave]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Cursed Mode Toggle" type="CheckButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_0wysn")
-theme_override_font_sizes/font_size = 128
-theme_override_icons/checked = ExtResource("5_xl08w")
-theme_override_icons/unchecked = ExtResource("6_77jaa")
-text = "Cursed Mode"
+[node name="Play Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = 399.0
+offset_right = 312.0
+offset_bottom = 545.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_wu84c")
+theme_type_variation = &"ButtonGold"
+theme_override_font_sizes/font_size = 96
+text = "PLAY"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
-[connection signal="toggled" from="PanelContainer/MarginContainer/VBoxContainer/Cursed Mode Toggle" to="." method="_on_cursed_mode_toggle_toggled"]
+[node name="Settings Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = 636.0
+offset_right = 312.0
+offset_bottom = 782.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 96
+text = "SETTINGS"
+
+[node name="Vignette" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_oa1go")
+metadata/_edit_lock_ = true
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -113.0
+offset_right = 165.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "made by mao"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Settings Button" to="." method="_on_settings_button_pressed"]

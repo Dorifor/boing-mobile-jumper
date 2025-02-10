@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var jump_sounds_cursed: Array[AudioStream] = []
 @export var jump_audio_player: AudioStreamPlayer
 
-signal just_jumped(player_y_position: int)
+signal just_jumped(platform_position: Vector2, platform_x_scale: float)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -43,10 +43,11 @@ func jump():
 	var collided_platform = get_last_slide_collision().get_collider()
 	if collided_platform != null:
 		velocity.y = JUMP_VELOCITY
+		just_jumped.emit(collided_platform.position)
 		break_platform(collided_platform)
 		play_random_jump_sound()
-		Input.vibrate_handheld(25)
-		just_jumped.emit(position.y)
+		if PlayerPrefs.get_pref("vibrations", true):
+			Input.vibrate_handheld(25)
 
 
 func break_platform(platform):

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c2pjduu8ismol"]
+
+[ext_resource type="FontFile" uid="uid://dwqks13fgjar0" path="res://assets/fonts/Dosis-Bold.ttf" id="1_hgv2j"]
+
+[resource]
+font = ExtResource("1_hgv2j")
+font_size = 64
