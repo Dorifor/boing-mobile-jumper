@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Boing"
+config/version="1.2"
 run/main_scene="res://scenes/main_menu.tscn"
-config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://assets/sprites/boing_logo.png"
+config/features=PackedStringArray("4.5", "Mobile")
+config/icon="uid://bgp8np1cweqkl"
 
 [autoload]
 

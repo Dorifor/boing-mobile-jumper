@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgqm1yw38sk74"]
+[gd_scene load_steps=18 format=3 uid="uid://dgqm1yw38sk74"]
 
 [ext_resource type="Script" uid="uid://dsb0ox6onigrr" path="res://scripts/main_menu.gd" id="1_j5sw4"]
-[ext_resource type="PackedScene" uid="uid://eqiy6h1qfe24" path="res://scenes/game.tscn" id="2_yqtyo"]
 [ext_resource type="Texture2D" uid="uid://b087gdr362jo6" path="res://assets/sprites/pattern.png" id="3_rtw2f"]
-[ext_resource type="Texture2D" uid="uid://dvgqk44pkaup5" path="res://assets/sprites/temp_logo.png" id="4_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dh7awdr5jhj6t" path="res://assets/sprites/red_body_squircle_600x.png" id="4_tbmy8"]
 [ext_resource type="Theme" uid="uid://bd0iprnxa3pn0" path="res://assets/ui_theme.tres" id="4_wu84c"]
+[ext_resource type="Texture2D" uid="uid://bh2owsrveqcwf" path="res://assets/sprites/face_h.png" id="5_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://bhah3fgt3ftam" path="res://assets/sprites/eyebrow_left.png" id="6_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://bbhgmwmg41cxf" path="res://assets/sprites/eyebrow_right.png" id="7_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://demv7w6r8hi8i" path="res://assets/sprites/red_hand_open.png" id="8_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://jw8fxefa5dh2" path="res://assets/sprites/red_hand_peace.png" id="9_lgwnu"]
 
 [sub_resource type="Animation" id="Animation_5dd4i"]
 length = 0.001
@@ -32,6 +36,112 @@ _data = {
 &"menu_background_pattern": SubResource("Animation_jk1qb")
 }
 
+[sub_resource type="Animation" id="Animation_rcqid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyebrowLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyebrowRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(103, 194)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedHandOpen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RedHandPeace:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_flqon"]
+resource_name = "menu_char_smug"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyebrowLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 4.16133, 4.30653, 4.46787, 4.6292),
+"transitions": PackedFloat32Array(1, 0.287175, 0.287175, 0.287175, 0.287175, 0.287175),
+"update": 0,
+"values": [Vector2(335, 226), Vector2(335, 226), Vector2(335, 191), Vector2(335, 216), Vector2(335, 187), Vector2(335, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyebrowRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 4.16133, 4.30653, 4.46787, 4.6292),
+"transitions": PackedFloat32Array(1, 0.287175, 0.287175, 0.287175, 0.287175, 0.287175),
+"update": 0,
+"values": [Vector2(103, 194), Vector2(103, 194), Vector2(103, 159), Vector2(103, 184), Vector2(103, 155), Vector2(103, 194)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedHandOpen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.181455, -0.25, 0, 0.25, 0, 0.165073, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2.3, 3.43333, 5.03333)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RedHandPeace:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.18, -0.25, 0, 0.25, 0, -0.16, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.79233, 3.16667, 4.63333, 6.06667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ajci"]
+_data = {
+&"RESET": SubResource("Animation_rcqid"),
+&"menu_char_smug": SubResource("Animation_flqon")
+}
+
 [sub_resource type="Gradient" id="Gradient_rtw2f"]
 interpolation_color_space = 1
 offsets = PackedFloat32Array(0.62766, 0.973404)
@@ -51,7 +161,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j5sw4")
-game_scene = ExtResource("2_yqtyo")
 metadata/_edit_vertical_guides_ = [336.0, 964.0]
 
 [node name="Background Color" type="ColorRect" parent="."]
@@ -71,9 +180,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -859.0
+offset_left = -833.0
 offset_top = -1375.0
-offset_right = 2258.0
+offset_right = 2284.0
 offset_bottom = 3110.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -100,8 +209,92 @@ offset_right = 312.0
 offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_oa1go")
+texture = ExtResource("4_tbmy8")
 stretch_mode = 3
+
+[node name="FaceH" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -2.5
+offset_right = 187.5
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jk1qb")
+
+[node name="EyebrowLeft" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -106.5
+offset_right = 206.0
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5dd4i")
+
+[node name="EyebrowRight" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -138.5
+offset_right = -26.0
+offset_bottom = -39.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_lgwnu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="App Logo"]
+libraries = {
+&"": SubResource("AnimationLibrary_1ajci")
+}
+autoplay = "menu_char_smug"
+next/menu_char_smug = &"menu_char_smug"
+
+[node name="RedHandOpen" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 284.0
+offset_top = 47.5
+offset_right = 527.0
+offset_bottom = 298.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(121.5, 180)
+texture = ExtResource("8_5dd4i")
+
+[node name="RedHandPeace" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -54.5
+offset_right = -290.0
+offset_bottom = 189.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(142, 170)
+texture = ExtResource("9_lgwnu")
 
 [node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -189,6 +382,7 @@ offset_right = 165.0
 offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 64
 text = "made by mao"
 horizontal_alignment = 1
 vertical_alignment = 1

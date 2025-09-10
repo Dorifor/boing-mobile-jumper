@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://eqiy6h1qfe24"]
+[gd_scene load_steps=53 format=3 uid="uid://eqiy6h1qfe24"]
 
 [ext_resource type="Script" uid="uid://dt0inpp67rpig" path="res://scripts/game_manager.gd" id="1_y075x"]
 [ext_resource type="PackedScene" uid="uid://co1s1kqhenx38" path="res://prefabs/platform_purple.tscn" id="3_qakuj"]
@@ -20,8 +20,28 @@
 [ext_resource type="AudioStream" uid="uid://bi0ym3iiv8dij" path="res://assets/sounds/death/minecraft_explosion.wav" id="14_uby21"]
 [ext_resource type="AudioStream" uid="uid://ipp1o0k4heg6" path="res://assets/sounds/death/nerdhorn.wav" id="15_7qx40"]
 [ext_resource type="AudioStream" uid="uid://byoq300tduh8d" path="res://assets/sounds/death/skeleton.wav" id="16_ycxql"]
-[ext_resource type="FontFile" uid="uid://c3tsfmbxevre6" path="res://assets/fonts/Dosis-Medium.ttf" id="19_37s47"]
+[ext_resource type="AudioStream" uid="uid://coyairiqpfq3x" path="res://assets/sounds/jump/impactWood_heavy_000.ogg" id="19_02fa5"]
+[ext_resource type="FontFile" uid="uid://bybhpxquwduf7" path="res://assets/fonts/RobotoMono-Bold.ttf" id="19_37s47"]
+[ext_resource type="AudioStream" uid="uid://b5cwlrirhj7c0" path="res://assets/sounds/jump/impactWood_heavy_001.ogg" id="20_nepv3"]
+[ext_resource type="AudioStream" uid="uid://dfbl0i33ikg44" path="res://assets/sounds/jump/impactWood_heavy_002.ogg" id="21_7025r"]
 [ext_resource type="Script" uid="uid://dgo34kufctn87" path="res://nodes/interactive_touchscreen_button.gd" id="22_37s47"]
+[ext_resource type="AudioStream" uid="uid://3lmh2rgedayy" path="res://assets/sounds/jump/impactWood_heavy_003.ogg" id="22_m4url"]
+[ext_resource type="AudioStream" uid="uid://dhipxg5071e8a" path="res://assets/sounds/jump/impactWood_heavy_004.ogg" id="23_8ool0"]
+[ext_resource type="AudioStream" uid="uid://q6dvej3wrxks" path="res://assets/sounds/jump/impactWood_light_000.ogg" id="24_pr1ej"]
+[ext_resource type="AudioStream" uid="uid://c3amj51y4i22w" path="res://assets/sounds/jump/impactWood_light_001.ogg" id="25_05nbr"]
+[ext_resource type="AudioStream" uid="uid://cpehhihkyc06e" path="res://assets/sounds/jump/impactWood_light_002.ogg" id="26_0sl42"]
+[ext_resource type="AudioStream" uid="uid://c1j38haaix6s8" path="res://assets/sounds/jump/impactWood_light_003.ogg" id="27_oaba0"]
+[ext_resource type="AudioStream" uid="uid://cwfdlvs5q5nnc" path="res://assets/sounds/jump/impactWood_light_004.ogg" id="28_458eo"]
+[ext_resource type="AudioStream" uid="uid://cyfjod5pxwd2t" path="res://assets/sounds/jump/impactWood_medium_000.ogg" id="29_h3rex"]
+[ext_resource type="AudioStream" uid="uid://c36gion32w8tx" path="res://assets/sounds/jump/impactWood_medium_001.ogg" id="30_fedci"]
+[ext_resource type="AudioStream" uid="uid://die0cpr6dlyvg" path="res://assets/sounds/jump/impactWood_medium_002.ogg" id="31_8qswn"]
+[ext_resource type="AudioStream" uid="uid://bpif26tnp73kn" path="res://assets/sounds/jump/impactWood_medium_003.ogg" id="32_rm0al"]
+[ext_resource type="AudioStream" uid="uid://nxa11e5lmeca" path="res://assets/sounds/jump/impactWood_medium_004.ogg" id="33_i4re6"]
+[ext_resource type="AudioStream" uid="uid://ve4hsjq0olv7" path="res://assets/sounds/jump/boink.wav" id="34_pr1ej"]
+[ext_resource type="AudioStream" uid="uid://bolakbtp8ytvi" path="res://assets/sounds/jump/fart.wav" id="35_05nbr"]
+[ext_resource type="AudioStream" uid="uid://b63jb131lvhmt" path="res://assets/sounds/jump/hitmarker.wav" id="36_0sl42"]
+[ext_resource type="AudioStream" uid="uid://biw58rimhwpgk" path="res://assets/sounds/jump/steve_oof.wav" id="37_oaba0"]
+[ext_resource type="AudioStream" uid="uid://d0ppxelk0xfrv" path="res://assets/sounds/jump/yahoo.wav" id="38_458eo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1dc1"]
 size = Vector2(692, 20)
@@ -33,9 +53,9 @@ colors = PackedColorArray(0.809334, 0.926402, 0.934939, 1, 0.853138, 0.949229, 0
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bt5mj"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e1j6l"]
-seamless = true
-color_ramp = SubResource("Gradient_37s47")
 noise = SubResource("FastNoiseLite_bt5mj")
+color_ramp = SubResource("Gradient_37s47")
+seamless = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37s47"]
 size = Vector2(322.829, 56.9647)
@@ -48,10 +68,10 @@ size = Vector2(322.829, 56.9647)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vrdds"]
 font = ExtResource("19_37s47")
-font_size = 256
+font_size = 224
 font_color = Color(0.996078, 0.996078, 0.996078, 1)
 outline_size = 32
-outline_color = Color(0.984314, 0.792157, 0.298039, 1)
+outline_color = Color(0.69, 0.69, 0.69, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5newe"]
 bg_color = Color(0.2754, 0.40905, 0.81, 0.831373)
@@ -150,6 +170,8 @@ shape = SubResource("RectangleShape2D_e1j6l")
 position = Vector2(774, 1094)
 collision_layer = 2
 JUMP_VELOCITY = -5700.0
+jump_sounds = Array[AudioStream]([ExtResource("19_02fa5"), ExtResource("20_nepv3"), ExtResource("21_7025r"), ExtResource("22_m4url"), ExtResource("23_8ool0"), ExtResource("24_pr1ej"), ExtResource("25_05nbr"), ExtResource("26_0sl42"), ExtResource("27_oaba0"), ExtResource("28_458eo"), ExtResource("29_h3rex"), ExtResource("30_fedci"), ExtResource("31_8qswn"), ExtResource("32_rm0al"), ExtResource("33_i4re6")])
+jump_sounds_cursed = Array[AudioStream]([ExtResource("34_pr1ej"), ExtResource("35_05nbr"), ExtResource("36_0sl42"), ExtResource("37_oaba0"), ExtResource("38_458eo"), ExtResource("19_02fa5"), ExtResource("20_nepv3"), ExtResource("24_pr1ej"), ExtResource("25_05nbr"), ExtResource("29_h3rex"), ExtResource("30_fedci")])
 
 [node name="RemoteTransform2D" parent="Player/Marker2D" index="0"]
 remote_path = NodePath("../../../Camera2D")
@@ -161,7 +183,8 @@ update_scale = false
 [node name="Score Container" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 178.0
+offset_top = 64.0
+offset_bottom = 388.0
 grow_horizontal = 2
 
 [node name="Score Label" type="Label" parent="CanvasLayer/Score Container"]
@@ -180,6 +203,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Death Container"]
+custom_minimum_size = Vector2(800, 105)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5newe")
 
@@ -249,7 +273,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("8_oa06d")
 script = ExtResource("22_37s47")
 input_action = &"ui_left"
-metadata/_custom_type_script = ExtResource("22_37s47")
+metadata/_custom_type_script = "uid://dgo34kufctn87"
 
 [node name="Right Button" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -258,7 +282,7 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("8_oa06d")
 script = ExtResource("22_37s47")
 input_action = &"ui_right"
-metadata/_custom_type_script = ExtResource("22_37s47")
+metadata/_custom_type_script = "uid://dgo34kufctn87"
 
 [node name="Right Arrow" type="TextureRect" parent="CanvasLayer"]
 visible = false
@@ -301,11 +325,14 @@ position = Vector2(824, 1800)
 
 [node name="Platform2" parent="." instance=ExtResource("4_nsixm")]
 position = Vector2(305, 925)
+scale = Vector2(1.6, 2)
 
 [node name="Platform3" parent="." instance=ExtResource("4_nsixm")]
 position = Vector2(1000, 50)
+scale = Vector2(1.8, 2)
 
 [node name="Sound Player" type="AudioStreamPlayer" parent="."]
+volume_db = -24.66
 
 [connection signal="body_entered" from="Death Area" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="Background/Area" to="." method="on_background_area_reached"]

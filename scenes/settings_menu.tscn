@@ -1,0 +1,393 @@
+[gd_scene load_steps=20 format=3 uid="uid://b3k7ce0hww4q2"]
+
+[ext_resource type="Script" uid="uid://c7hrh6fm5ouqx" path="res://scripts/settings_menu.gd" id="1_jrqig"]
+[ext_resource type="Texture2D" uid="uid://b087gdr362jo6" path="res://assets/sprites/pattern.png" id="3_n0fy7"]
+[ext_resource type="Texture2D" uid="uid://dh7awdr5jhj6t" path="res://assets/sprites/red_body_squircle_600x.png" id="4_jpbdv"]
+[ext_resource type="Texture2D" uid="uid://bh2owsrveqcwf" path="res://assets/sprites/face_h.png" id="5_puhno"]
+[ext_resource type="Texture2D" uid="uid://bhah3fgt3ftam" path="res://assets/sprites/eyebrow_left.png" id="6_75x6d"]
+[ext_resource type="Texture2D" uid="uid://bbhgmwmg41cxf" path="res://assets/sprites/eyebrow_right.png" id="7_x0dr5"]
+[ext_resource type="Texture2D" uid="uid://demv7w6r8hi8i" path="res://assets/sprites/red_hand_open.png" id="8_gdgfw"]
+[ext_resource type="Texture2D" uid="uid://jw8fxefa5dh2" path="res://assets/sprites/red_hand_peace.png" id="9_vymnv"]
+[ext_resource type="Theme" uid="uid://bd0iprnxa3pn0" path="res://assets/ui_theme.tres" id="10_2tyyr"]
+[ext_resource type="Texture2D" uid="uid://ckktnlo16cypo" path="res://assets/sprites/filled_check.png" id="11_n0fy7"]
+[ext_resource type="Texture2D" uid="uid://ch3ya32rip38u" path="res://assets/sprites/empty_check.png" id="12_jpbdv"]
+
+[sub_resource type="Animation" id="Animation_5dd4i"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_jk1qb"]
+resource_name = "menu_background_pattern"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-648, -686)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgwnu"]
+_data = {
+&"RESET": SubResource("Animation_5dd4i"),
+&"menu_background_pattern": SubResource("Animation_jk1qb")
+}
+
+[sub_resource type="Animation" id="Animation_rcqid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyebrowLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyebrowRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(103, 194)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedHandOpen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RedHandPeace:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_flqon"]
+resource_name = "menu_char_smug"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyebrowLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 4.16133, 4.30653, 4.46787, 4.6292),
+"transitions": PackedFloat32Array(1, 0.287175, 0.287175, 0.287175, 0.287175, 0.287175),
+"update": 0,
+"values": [Vector2(335, 226), Vector2(335, 226), Vector2(335, 191), Vector2(335, 216), Vector2(335, 187), Vector2(335, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EyebrowRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 4.16133, 4.30653, 4.46787, 4.6292),
+"transitions": PackedFloat32Array(1, 0.287175, 0.287175, 0.287175, 0.287175, 0.287175),
+"update": 0,
+"values": [Vector2(103, 194), Vector2(103, 194), Vector2(103, 159), Vector2(103, 184), Vector2(103, 155), Vector2(103, 194)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RedHandOpen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.181455, -0.25, 0, 0.25, 0, 0.165073, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.2, 2.3, 3.43333, 5.03333)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RedHandPeace:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.18, -0.25, 0, 0.25, 0, -0.16, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.79233, 3.16667, 4.63333, 6.06667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ajci"]
+_data = {
+&"RESET": SubResource("Animation_rcqid"),
+&"menu_char_smug": SubResource("Animation_flqon")
+}
+
+[sub_resource type="Gradient" id="Gradient_rtw2f"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.62766, 0.973404)
+colors = PackedColorArray(0.447059, 0.537255, 0.909804, 0, 0.447059, 0.537255, 0.909804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oa1go"]
+gradient = SubResource("Gradient_rtw2f")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Settings Menu" type="Control" node_paths=PackedStringArray("vibration_checkbox", "cursed_sounds_checkbox")]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jrqig")
+vibration_checkbox = NodePath("VBoxContainer/Row/Vibrations CheckBox")
+cursed_sounds_checkbox = NodePath("VBoxContainer/Row2/Cursed CheckBox")
+metadata/_edit_vertical_guides_ = [336.0, 964.0]
+
+[node name="Background Color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.537255, 0.909804, 1)
+
+[node name="Background Pattern" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.156863)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -833.0
+offset_top = -1375.0
+offset_right = 2284.0
+offset_bottom = 3110.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_n0fy7")
+expand_mode = 4
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background Pattern"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgwnu")
+}
+autoplay = "menu_background_pattern"
+
+[node name="App Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -950.0
+offset_right = 312.0
+offset_bottom = -285.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jpbdv")
+stretch_mode = 3
+
+[node name="FaceH" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -2.5
+offset_right = 187.5
+offset_bottom = 133.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_puhno")
+
+[node name="EyebrowLeft" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -106.5
+offset_right = 206.0
+offset_bottom = -7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_75x6d")
+
+[node name="EyebrowRight" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -138.5
+offset_right = -26.0
+offset_bottom = -39.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_x0dr5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="App Logo"]
+libraries = {
+&"": SubResource("AnimationLibrary_1ajci")
+}
+autoplay = "menu_char_smug"
+next/menu_char_smug = &"menu_char_smug"
+
+[node name="RedHandOpen" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 284.0
+offset_top = 47.5
+offset_right = 527.0
+offset_bottom = 298.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(121.5, 180)
+texture = ExtResource("8_gdgfw")
+
+[node name="RedHandPeace" type="TextureRect" parent="App Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -54.5
+offset_right = -290.0
+offset_bottom = 189.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(142, 170)
+texture = ExtResource("9_vymnv")
+
+[node name="Vignette" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_oa1go")
+metadata/_edit_lock_ = true
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = -113.0
+offset_right = 165.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "made by mao"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 259.0
+offset_top = -151.0
+offset_right = -259.0
+offset_bottom = 686.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Row" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Row"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Vibrations: "
+
+[node name="Vibrations CheckBox" type="CheckBox" parent="VBoxContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_icons/checked = ExtResource("11_n0fy7")
+theme_override_icons/unchecked = ExtResource("12_jpbdv")
+flat = true
+icon_alignment = 1
+
+[node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Row2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Cursed Sounds:"
+
+[node name="Cursed CheckBox" type="CheckBox" parent="VBoxContainer/Row2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_icons/checked = ExtResource("11_n0fy7")
+theme_override_icons/unchecked = ExtResource("12_jpbdv")
+flat = true
+icon_alignment = 1
+
+[node name="Back Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("10_2tyyr")
+theme_override_font_sizes/font_size = 96
+text = "Back"
+
+[connection signal="toggled" from="VBoxContainer/Row/Vibrations CheckBox" to="." method="_on_vibrations_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/Row2/Cursed CheckBox" to="." method="_on_cursed_check_box_toggled"]
+[connection signal="pressed" from="VBoxContainer/Back Button" to="." method="_on_back_button_pressed"]

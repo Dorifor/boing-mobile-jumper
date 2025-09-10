@@ -79,6 +79,7 @@ func spawn_new_platform(prev_platform_position: Vector2) -> void:
 func get_new_platform_x_position(new_platform_x_scale: float) -> int:
 	# new_platform_width / 2 -> prev_x - prev_w / 2 || prev_x + prev_w / 2 -> screen_width - new_platform_width / 2
 	var left = randi_range(0, 1) == 1
+	var total_random = randi_range(0, 10) > 6
 	
 	var prev_platform = platforms.get(platforms.size() - 1)
 	
@@ -91,6 +92,9 @@ func get_new_platform_x_position(new_platform_x_scale: float) -> int:
 	var right_min = prev_platform.position.x + prev_platform_width / 1.75
 	var right_max = screen_width - new_platform_width / 2
 	
+	if total_random:
+		return randi_range(left_min, right_max)
+	
 	if left_max <= left_min:
 		left = false
 	if right_max <= right_min:
@@ -99,7 +103,6 @@ func get_new_platform_x_position(new_platform_x_scale: float) -> int:
 	return randi_range(left_min, left_max) if left else randi_range(right_min, right_max)
 
 func on_background_area_reached(body: Node2D):
-	print(body.name)
 	var last_bg: Sprite2D = backgrounds.pop_at(0)
 	var current: Sprite2D = backgrounds[0]
 	current.get_child(0).set_deferred("monitoring", false)
@@ -108,7 +111,6 @@ func on_background_area_reached(body: Node2D):
 	last_bg.get_child(0).get_child(0).set_deferred("disabled", false)
 	last_bg.position.y -= BACKGROUND_HEIGHT * 3
 	backgrounds.append(last_bg)
-	#print("REACHED, moved %s" % last_bg.get_meta("color"))
 
 func _on_restart_button_pressed() -> void:
 	get_tree().reload_current_scene()
